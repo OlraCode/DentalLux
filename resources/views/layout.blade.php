@@ -10,7 +10,7 @@
 </head>
 <body class="h-screen flex flex-col bg-sky-50 text-gray-900">
 
-    <header class="bg-white shadow p-4">
+    <header class="bg-white shadow p-4 w-screen">
         <div class="md:mx-24 flex justify-between items-center">
             <div class="flex items-center">
                 <img src="{{ asset('img/logo.png') }}" alt="Dental Lux" class="w-10 mr-2">
@@ -46,7 +46,7 @@
             </nav>
 
             <div class="hidden md:flex gap-3">
-                <a target="_blank" href="https://wa.me/5521999999999?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta" class="button bg-sky-500 text-white border-0 h-12 font-semibold">
+                <a target="_blank" href="https://wa.me/5521999999999?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta" class="button bg-sky-500 text-white border-0 h-12 font-semibold hover:opacity-75">
                     <img src="{{ asset('img/phone.png') }}" class="h-6">(21)
                     99999-9999
                 </a>
@@ -63,11 +63,11 @@
     </header>
 
     
-    <div class="bg-white h-screen w-0 right-0 fixed transition-all duration-300 ease-out shadow-lg" id="menuContainer">
+    <div class="bg-white h-screen w-0 right-0 fixed transition-all duration-300 ease-out shadow-lg z-10" id="menuContainer">
         
-        <div class="invisible pointer-events-none opacity-0 transition-opacity duration-400 fixed h-screen left-0 w-1/2 bg-black/40 backdrop-blur-xs" id="overlay"></div>
+        <div class="invisible pointer-events-none opacity-0 transition-opacity duration-400 fixed h-screen left-0 w-1/2 bg-black/40 backdrop-blur-xs z-10" id="overlay"></div>
 
-        <div class="invisible pointer-events-none opacity-0 flex flex-col items-center h-full transition-opacity duration-300" id="menuContent">
+        <div class="invisible pointer-events-none opacity-0 flex flex-col items-center h-full transition-opacity duration-300 z-10" id="menuContent">
             <a href="#" class="flex items-center gap-2 bg-gray-100 rounded py-6 px-2 hover:opacity-75">
                 <img src="{{ asset('img/userIcon.png') }}" class="h-16">
                 <div class="">
@@ -83,7 +83,7 @@
                 <img src="{{ asset('img/phone.png') }}" class="h-6">(21)
                 99999-9999
             </a>
-            <div class="fixed left-3/8 top-4 bg-white size-11 flex items-center justify-center rounded-full text-2xl cursor-pointer hover:bg-gray-200 transition shadow-lg" id="closeButton">x</div>
+            <div class="fixed left-3/8 top-4 bg-white size-11 flex items-center justify-center rounded-full text-2xl cursor-pointer hover:bg-gray-200 transition shadow-lg z-10" id="closeButton">x</div>
         </div>
 
     </div>

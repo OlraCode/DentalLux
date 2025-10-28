@@ -50,17 +50,17 @@
                 </div>
                 <div class="bg-white p-4 rounded-xl shadow-md flex items-center gap-3 hover:-translate-y-1 transition">
                     <img src="{{ asset('img/check.png') }}" class="w-10">
-                    <h2>Equipamentos de última geração</h2>
+                    <h2>Profissionais especializados</h2>
                 </div>
         
                 <div class="bg-white p-4 rounded-xl shadow-md flex items-center gap-3 hover:-translate-y-1 transition">
                     <img src="{{ asset('img/check.png') }}" class="w-10">
-                    <h2>Equipamentos de última geração</h2>
+                    <h2>Atendimento humanizado</h2>
                 </div>
 
                 <div class="bg-white p-4 rounded-xl shadow-md flex items-center gap-3 hover:-translate-y-1 transition">
                     <img src="{{ asset('img/check.png') }}" class="w-10">
-                    <h2>Equipamentos de última geração</h2>
+                    <h2>Agendamento online facilitado</h2>
                 </div>
             </div>
         </div>

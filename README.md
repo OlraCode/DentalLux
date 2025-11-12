@@ -39,4 +39,6 @@ A aplicação estará disponível em:
 
 # Prints das páginas
 
-![home](./prints/home.png)
+![home](./prints/home1.png)
+![home](./prints/home2.png)
+![home](./prints/home3.png)

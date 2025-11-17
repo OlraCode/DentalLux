@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Profile Information') }}
+            Informações do Perfil
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
+            Atualize suas informações de perfil.
         </p>
     </header>
 
@@ -21,6 +21,12 @@
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        </div>
+
+        <div>
+            <x-input-label for="phone" value="Telefone" />
+            <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full" :value="old('phone', $user->phone)" required autofocus autocomplete="phone" />
+            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
         </div>
 
         <div>
@@ -48,7 +54,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button>Salvar</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p
@@ -57,8 +63,29 @@
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
                     class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
+                >{{ __('Atualizado.') }}</p>
             @endif
         </div>
     </form>
 </section>
+
+<script>
+    document.getElementById('phone').addEventListener('input', function (e) {
+        let value = e.target.value.replace(/\D/g, ''); // remove tudo que não é número
+
+        if (value.length > 11) {
+            value = value.substring(0, 11); // limita a 11 dígitos
+        }
+
+        // Aplica máscara (99) 99999-9999
+        if (value.length > 6) {
+            e.target.value = `(${value.slice(0,2)}) ${value.slice(2,7)}-${value.slice(7)}`;
+        } 
+        else if (value.length > 2) {
+            e.target.value = `(${value.slice(0,2)}) ${value.slice(2)}`;
+        } 
+        else {
+            e.target.value = value; // apenas DDD
+        }
+    });
+</script>

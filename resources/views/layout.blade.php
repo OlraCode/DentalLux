@@ -52,7 +52,7 @@
                 </a>
 
                 @auth
-                    <a href="#" class="button h-12"><img src="{{ asset('img/userIcon.png') }}" alt="User" class="w-10">Carlo Mathias</a>
+                    <a href="{{ route('profile.edit') }}" class="button h-12"><img src="{{ asset('img/userIcon.png') }}" alt="User" class="w-10">Carlo Mathias</a>
                 @else
                     <a href="{{ route('login') }}" class="button h-12 ml-5 border-sky-100 hover:bg-sky-100 bg-sky-50">Entrar</a>
                     <a href="{{ route('register') }}" class="button h-12 bg-sky-500 hover:bg-sky-400 text-white">Cadastrar</a>

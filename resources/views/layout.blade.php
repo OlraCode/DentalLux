@@ -12,13 +12,13 @@
 
     <header class="bg-white shadow p-4 w-screen">
         <div class="md:mx-24 flex justify-between items-center">
-            <div class="flex items-center">
+            <a href="{{ route('home') }}" class="flex items-center cursor-pointer">
                 <img src="{{ asset('img/logo.png') }}" alt="Dental Lux" class="w-10 mr-2">
                 <div class="flex flex-col">
                     <h1 class="text-2xl font-bold text-sky-500">DentalLux</h1>
                     <p class="text-sm text-gray-400 hidden md:block">Seu sorriso é nossa prioridade</p>
                 </div>
-            </div>
+            </a>
             <nav class="hidden md:flex gap-3 items-center">
                 <a href="{{ route('home') }}" @class([
                         'button border-0',
@@ -46,9 +46,8 @@
             </nav>
 
             <div class="hidden md:flex gap-3">
-                <a target="_blank" href="https://wa.me/5521999999999?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta" class="button bg-sky-500 text-white border-0 h-12 font-semibold hover:opacity-75">
-                    <img src="{{ asset('img/phone.png') }}" class="h-6">(21)
-                    99999-9999
+                <a target="_blank" href="https://wa.me/5521973075405?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta" class="button bg-sky-500 text-white border-0 h-12 font-semibold hover:opacity-75">
+                    <img src="{{ asset('img/phone.png') }}" class="h-6">(21) 97307-5405
                 </a>
 
                 @auth
@@ -73,20 +72,27 @@
         <div class="invisible pointer-events-none opacity-0 transition-opacity duration-400 fixed h-screen left-0 w-1/2 bg-black/40 backdrop-blur-xs z-10" id="overlay"></div>
 
         <div class="invisible pointer-events-none opacity-0 flex flex-col items-center h-full transition-opacity duration-300 z-10" id="menuContent">
-            <a href="#" class="flex items-center gap-2 bg-gray-100 rounded py-6 px-2 hover:opacity-75">
-                <img src="{{ asset('img/userIcon.png') }}" class="h-16">
-                <div class="">
-                    <h2>Olá, Carlo Mathias</h2>
-                    <p>Bem vinda de volta</p>
-                </div>
-            </a>
-            <a href="#" class="button border-0 w-19/20 text-sky-500 mt-1 mb-8 flex justify-center">Acessar perfil</a>
-            <a href="#" class="button border-0 w-19/20 my-1 flex justify-center">Home</a>
+
+            @auth
+                <a href="{{ route('profile.edit') }}" class="flex items-center gap-2 bg-gray-100 rounded py-6 px-2 hover:opacity-75">
+                    <img src="{{ asset('img/userIcon.png') }}" class="h-16">
+                    <div class="">
+                        <h2>Olá, Carlo Mathias</h2>
+                        <p>Bem vinda de volta</p>
+                    </div>
+                </a>
+                <a href="{{ route('profile.edit') }}" class="button border-0 w-19/20 text-sky-500 mt-1 mb-8 flex justify-center">Acessar perfil</a>
+            @else
+                <a href="{{ route('login') }}" class="button border-0 w-19/20 bg-sky-100 mt-5 flex justify-center">Entrar</a>
+                <a href="{{ route('register') }}" class="button w-19/20 text-white bg-sky-500 mt-1 mb-8 flex justify-center">Cadastrar</a>
+            @endauth
+
+            <a href="{{ route('home') }}" class="button border-0 w-19/20 my-1 flex justify-center">Home</a>
             <a href="#" class="button border-0 w-19/20 my-1 flex justify-center">Agendar</a>
             <a href="#" class="button border-0 w-19/20 my-1 flex justify-center">Consultas</a>
-            <a target="_blank" href="https://wa.me/5521999999999?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta" class="button mt-auto mb-8 bg-sky-500 text-white border-0 h-12 font-semibold hover:opacity-75">
-                <img src="{{ asset('img/phone.png') }}" class="h-6">(21)
-                99999-9999
+            <a target="_blank" href="https://wa.me/5521973075405?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta" class="button mt-auto mb-8 bg-sky-500 text-white border-0 h-12 font-semibold hover:opacity-75">
+                <img src="{{ asset('img/phone.png') }}" class="h-6">
+                (21) 97307-5405
             </a>
             <div class="fixed left-3/8 top-4 bg-white size-11 flex items-center justify-center rounded-full text-2xl cursor-pointer hover:bg-gray-200 transition shadow-lg z-10" id="closeButton">x</div>
         </div>

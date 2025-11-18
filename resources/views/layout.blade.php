@@ -51,14 +51,14 @@
                 </a>
 
                 @auth
-                    <a href="{{ route('profile.edit') }}" class="button h-12"><img src="{{ asset('img/userIcon.png') }}" alt="User" class="w-10">Carlo Mathias</a>
+                    <a href="{{ route('profile.edit') }}" class="button h-12"><img src="{{ asset('img/userIcon.png') }}" alt="User" class="w-10">{{ Auth::user()->name }}</a>
                 @else
                     <a href="{{ route('login') }}" class="button h-12 ml-5 border-sky-100 hover:bg-sky-100 bg-sky-50">Entrar</a>
                     <a href="{{ route('register') }}" class="button h-12 bg-sky-500 hover:bg-sky-400 text-white">Cadastrar</a>
                 @endauth
-                
+
             </div>
-            
+
             <div class="md:hidden">
                 <img src="{{ asset('img/menu.png') }}" alt="Menu" class="h-10 cursor-pointer hover:opacity-75" id="menuButton">
             </div>
@@ -66,9 +66,9 @@
         </div>
     </header>
 
-    
+
     <div class="bg-white h-screen w-0 right-0 fixed transition-all duration-300 ease-out shadow-lg z-10" id="menuContainer">
-        
+
         <div class="invisible pointer-events-none opacity-0 transition-opacity duration-400 fixed h-screen left-0 w-1/2 bg-black/40 backdrop-blur-xs z-10" id="overlay"></div>
 
         <div class="invisible pointer-events-none opacity-0 flex flex-col items-center h-full transition-opacity duration-300 z-10" id="menuContent">
@@ -77,7 +77,7 @@
                 <a href="{{ route('profile.edit') }}" class="flex items-center gap-2 bg-gray-100 rounded py-6 px-2 hover:opacity-75">
                     <img src="{{ asset('img/userIcon.png') }}" class="h-16">
                     <div class="">
-                        <h2>Olá, Carlo Mathias</h2>
+                        <h2>Olá, {{ Auth::user()->name }}</h2>
                         <p>Bem vinda de volta</p>
                     </div>
                 </a>

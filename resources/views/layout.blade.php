@@ -71,7 +71,7 @@
 
         <div class="invisible pointer-events-none opacity-0 transition-opacity duration-400 fixed h-screen left-0 w-1/2 bg-black/40 backdrop-blur-xs z-10" id="overlay"></div>
 
-        <div class="invisible pointer-events-none opacity-0 flex flex-col items-center h-full transition-opacity duration-300 z-10" id="menuContent">
+        <div class="invisible pointer-events-none opacity-0 flex flex-col items-center h-full py-6 transition-opacity duration-300 z-10" id="menuContent">
 
             @auth
                 <a href="{{ route('profile.edit') }}" class="flex items-center gap-2 bg-gray-100 rounded py-6 px-2 hover:opacity-75">
@@ -83,7 +83,7 @@
                 </a>
                 <a href="{{ route('profile.edit') }}" class="button border-0 w-19/20 text-sky-500 mt-1 mb-8 flex justify-center">Acessar perfil</a>
             @else
-                <a href="{{ route('login') }}" class="button border-0 w-19/20 bg-sky-100 mt-5 flex justify-center">Entrar</a>
+                <a href="{{ route('login') }}" class="button border-0 w-19/20 bg-sky-100 flex justify-center">Entrar</a>
                 <a href="{{ route('register') }}" class="button w-19/20 text-white bg-sky-500 mt-1 mb-8 flex justify-center">Cadastrar</a>
             @endauth
 
@@ -94,7 +94,7 @@
                 <img src="{{ asset('img/phone.png') }}" class="h-6">
                 (21) 97307-5405
             </a>
-            <div class="fixed left-3/8 top-4 bg-white size-11 flex items-center justify-center rounded-full text-2xl cursor-pointer hover:bg-gray-200 transition shadow-lg z-10" id="closeButton">x</div>
+            <div class="fixed left-7/20 top-4 bg-white size-11 flex items-center justify-center rounded-full text-2xl cursor-pointer hover:bg-gray-200 transition shadow-lg z-10" id="closeButton">x</div>
         </div>
 
     </div>

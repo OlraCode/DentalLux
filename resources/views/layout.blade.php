@@ -28,11 +28,11 @@
                     Home
                 </a>
 
-                <a href="#" @class([
+                <a href="{{ route('appointment.create') }}" @class([
                         'button border-0',
-                        'bg-sky-500 text-white shadow-lg hover:opacity-75' => request()->routeIs('agenda')
+                        'bg-sky-500 text-white shadow-lg hover:opacity-75' => request()->routeIs('appointment.create')
                     ])>
-                    <img src="{{asset('img/agenda.png')}}" @class(['h-4 brightness-0', 'brightness-100' =>  request()->routeIs('agenda')])>
+                    <img src="{{asset('img/agenda.png')}}" @class(['h-4 brightness-0', 'brightness-100' =>  request()->routeIs('appointment.create')])>
                     Agendar
                 </a>
 
@@ -88,7 +88,7 @@
             @endauth
 
             <a href="{{ route('home') }}" class="button border-0 w-19/20 my-1 flex justify-center">Home</a>
-            <a href="#" class="button border-0 w-19/20 my-1 flex justify-center">Agendar</a>
+            <a href="{{ route('appointment.create') }}" class="button border-0 w-19/20 my-1 flex justify-center">Agendar</a>
             <a href="#" class="button border-0 w-19/20 my-1 flex justify-center">Consultas</a>
             <a target="_blank" href="https://wa.me/5521973075405?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta" class="button mt-auto mb-8 bg-sky-500 text-white border-0 h-12 font-semibold hover:opacity-75">
                 <img src="{{ asset('img/phone.png') }}" class="h-6">

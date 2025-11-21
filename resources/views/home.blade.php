@@ -10,7 +10,7 @@
                     <h1 class="text-sky-500 md:text-7xl">merece o melhor</h1>
                     <p class="my-5 max-w-lg md:text-lg">Tecnologia avançada e atendimento humanizado para cuidar da sua saúde bucal com excelência.</p>
                     <div class="flex gap-3 justify-center md:justify-start">
-                        <a href="#" class="button bg-sky-400 text-white h-12 hover:opacity-75">Agendar Consulta</a>
+                        <a href="{{ route('appointment.create') }}" class="button bg-sky-400 text-white h-12 hover:opacity-75">Agendar Consulta</a>
                         <a href="#about" class="button border-2 border-sky-400 text-sky-400 h-12">Saiba Mais</a>
                     </div>
                     <div class="flex justify-between gap-3 w-9/10 mx-auto mt-12 mb-16">
@@ -135,7 +135,7 @@
         <div class="bg-linear-to-r from-sky-300 to-sky-500 flex flex-col items-center text-center p-12 mt-16">
             <h1 class="text-white mb-1 text-4xl">Pronto para transformar seu sorriso?</h1>
             <p class="text-white mb-5">Agende sua consulta agora e dê o primeiro passo para um sorriso mais saudável</p>
-            <a href="#" class="button bg-white text-sky-500 border-0 shadow-md hover:bg-blue-300 hover:text-white">Agendar Minha Consulta</a>
+            <a href="{{ route('appointment.create') }}" class="button bg-white text-sky-500 border-0 shadow-md hover:bg-blue-300 hover:text-white">Agendar Minha Consulta</a>
         </div>
     </main>
 

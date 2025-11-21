@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Service;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
 {
@@ -12,7 +15,11 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        
+        /** @var User */
+        $user = Auth::user();
+        $appointments = $user->appointments;
+
+        return view('appointment.index', compact('appointments'));
     }
 
     /**
@@ -28,7 +35,25 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'date' => 'required',
+            'time' => 'required',
+            'service' => 'required',
+            'observations' => 'max:255'
+        ]);
+
+        $date = \DateTimeImmutable::createFromFormat('d/m/Y', $request->date);
+        $time = new \DateTimeImmutable($request->time);
+
+        $appointment = new Appointment();
+        $appointment->date = $date;
+        $appointment->time = $time;
+        $appointment->service_id = Service::find($request->service)->id;
+        $appointment->user_id = Auth::user()->id;
+        $appointment->observations = $request->observations;
+        $appointment->save();
+
+        return redirect(route('appointment.index'));
     }
 
     /**

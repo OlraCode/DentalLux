@@ -11,11 +11,14 @@
                 <img src="{{ asset('img/agenda.png') }}" class="w-6 mr-2">
                 <h2 class="text-white">Dados do Agendamento</h2>
             </div>
-            <form action="#" method="post" class="flex flex-col gap-5">
+            <form action="{{ route('appointment.store') }}" method="post" class="flex flex-col gap-5">
+                @csrf
                 <div class="flex flex-col">
                     <label for="service" class="font-semibold">Tipo de serviço*</label>
                     <select name="service" id="service">
                         <option>Selecione o serviço</option>
+                        <option value="2">Clareamento</option>
+                        <option value="1">Geral</option>
                     </select>
                 </div>
 
@@ -23,6 +26,9 @@
                     <label for="date" class="font-semibold">Data preferida*</label>
                     <select name="date" id="date">
                         <option>Data</option>
+                        <option value="14/11/2025">14/11</option>
+                        <option value="15/11/2025">15/11</option>
+                        <option value="16/11/2025">16/11</option>
                     </select>
                 </div>
 
@@ -30,12 +36,16 @@
                     <label for="time" class="font-semibold">Horário preferido*</label>
                     <select name="time" id="time">
                         <option>Horário</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
                     </select>
                 </div>
 
                 <div class="flex flex-col">
                     <label for="obs">Observações (opcional)</label>
                     <textarea class="mt-1 border border-gray-300 p-1 rounded-md" name="observations" id="obs" cols="30" rows="4" placeholder="Alguma informação adicional que devemos saber?"></textarea>
+                    <x-input-error :messages="$errors->get('observations')" class="mt-2" />
                 </div>
 
                 <button type="submit" class="button flex justify-center bg-sky-400 text-white hover:opacity-80">Prosseguir</button>

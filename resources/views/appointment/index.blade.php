@@ -11,7 +11,7 @@
                     <h3 class="text-xl">{{ $appointment->time->format('H:i') }}</h3>
                 </div>
 
-                <a href="" class="button mt-auto bg-yellow-200">Editar</a>
+                <a href="{{ route('appointment.edit', ['appointment'=> $appointment->id ]) }}" class="button mt-auto bg-yellow-200">Editar</a>
             </div>
         @endforeach
     </div>

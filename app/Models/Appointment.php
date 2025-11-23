@@ -21,4 +21,14 @@ class Appointment extends Model
     {
         return $this->belongsTo(Service::class);
     }
+
+    public function setDate(string $date)
+    {
+        $this->date = \DateTimeImmutable::createFromFormat('d/m/Y', $date);
+    }
+
+    public function setTime(string $time)
+    {
+        $this->date = \DateTimeImmutable::createFromFormat('H:i', $time);
+    }
 }

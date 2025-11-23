@@ -13,9 +13,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment.index');
-    Route::get('/appointment/new', [AppointmentController::class, 'create'])->name('appointment.create');
-    Route::post('/appointment', [AppointmentController::class, 'store'])->name('appointment.store');
+    Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointment.index');
+    Route::get('/appointments/create', [AppointmentController::class, 'create'])->name('appointment.create');
+    Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointment.store');
+    Route::get('/appointments/{appointment}/edit', [AppointmentController::class, 'edit'])->name('appointment.edit');
+    Route::put('/appointments/{appointment}', [AppointmentController::class, 'update'])->name('appointment.update');
 });
 
 require __DIR__.'/auth.php';

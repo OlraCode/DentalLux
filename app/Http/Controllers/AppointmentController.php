@@ -27,7 +27,8 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return view('appointment.create');
+        $appointment = new Appointment;
+        return view('appointment.form', ['appointment' => $appointment, 'isEdit' => false]);
     }
 
     /**
@@ -42,15 +43,13 @@ class AppointmentController extends Controller
             'observations' => 'max:255'
         ]);
 
-        $date = \DateTimeImmutable::createFromFormat('d/m/Y', $request->date);
-        $time = new \DateTimeImmutable($request->time);
-
         $appointment = new Appointment();
-        $appointment->date = $date;
-        $appointment->time = $time;
+        $appointment->setDate($request->date);
+        $appointment->setTime($request->time);
         $appointment->service_id = Service::find($request->service)->id;
         $appointment->user_id = Auth::user()->id;
         $appointment->observations = $request->observations;
+
         $appointment->save();
 
         return redirect(route('appointment.index'));
@@ -69,7 +68,7 @@ class AppointmentController extends Controller
      */
     public function edit(Appointment $appointment)
     {
-        //
+        return view('appointment.form', ['appointment' => $appointment, 'isEdit' => true]);
     }
 
     /**
@@ -77,7 +76,14 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, Appointment $appointment)
     {
-        //
+        $appointment->setTime($request->time);
+        $appointment->setDate($request->date);
+        $appointment->service_id = $request->service;
+        $appointment->observations = $request->observations;
+
+        $appointment->save();
+
+        return redirect(route('appointment.index'));
     }
 
     /**

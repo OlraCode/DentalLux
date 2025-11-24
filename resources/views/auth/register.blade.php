@@ -8,7 +8,7 @@
             <!-- Name -->
             <div>
                 <x-input-label for="name" value="Nome" />
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '')" />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
@@ -73,10 +73,10 @@
             // Aplica máscara (99) 99999-9999
             if (value.length > 6) {
                 e.target.value = `(${value.slice(0,2)}) ${value.slice(2,7)}-${value.slice(7)}`;
-            } 
+            }
             else if (value.length > 2) {
                 e.target.value = `(${value.slice(0,2)}) ${value.slice(2)}`;
-            } 
+            }
             else {
                 e.target.value = value; // apenas DDD
             }
@@ -104,5 +104,5 @@
             }
         });
     </script>
-    
+
 @endsection

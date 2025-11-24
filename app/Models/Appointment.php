@@ -29,6 +29,6 @@ class Appointment extends Model
 
     public function setTime(string $time)
     {
-        $this->date = \DateTimeImmutable::createFromFormat('H:i', $time);
+        $this->time = \DateTimeImmutable::createFromFormat('H:i', $time);
     }
 }

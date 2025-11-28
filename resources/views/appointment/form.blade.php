@@ -37,9 +37,9 @@
                         @else
                             <option>Data</option>
                         @endif
-                        <option value="14/11/2025">14/11</option>
-                        <option value="15/11/2025">15/11</option>
-                        <option value="16/11/2025">16/11</option>
+                        <option value="14-11-2025">14/11</option>
+                        <option value="15-11-2025">15/11</option>
+                        <option value="16-11-2025">16/11</option>
                     </select>
                 </div>
 
@@ -51,9 +51,6 @@
                         @else
                             <option>Horário</option>
                         @endif
-                        <option value="14:00">14:00</option>
-                        <option value="15:00">15:00</option>
-                        <option value="16:00">16:00</option>
                     </select>
                 </div>
 
@@ -71,5 +68,39 @@
             </form>
         </div>
     </div>
+
+    <script>
+
+        const dateInput = document.getElementById('date')
+        const timeInput = document.getElementById('time')
+
+        dateInput.addEventListener('change', function () {
+            const date = this.value
+
+            if (!date) return
+
+            fetch(`http://localhost:8000/appointments/avaliableTimes/${date}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro na requisição')
+                    }
+                    return response.json()
+                })
+                .then(data => {
+                    console.log(data)
+
+                    timeInput.innerHTML = ''
+
+                    data.avaliableTimes.forEach(time => {
+                        const option = document.createElement('option')
+                        option.value = time
+                        option.textContent = time
+
+                        timeInput.appendChild(option)
+                    });
+                })
+        })
+
+    </script>
 
 @endsection

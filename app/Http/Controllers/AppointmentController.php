@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Service;
 use App\Models\Appointment;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -92,5 +93,23 @@ class AppointmentController extends Controller
     public function destroy(Appointment $appointment)
     {
         //
+    }
+
+    public function listAvaliableTimes(Request $request)
+    {
+        $times = collect([
+            '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00'
+        ]);
+
+        $date = \DateTimeImmutable::createFromFormat('d-m-Y', $request->date);
+        $appointments = Appointment::where('date', $date->format('Y/m/d'))->get();
+
+        $unavaliableTimes = collect($appointments->map(fn ($i) => $i->time->format('H:i')));
+
+        $avaliableTimes = $times->diff($unavaliableTimes);
+
+        return response()->json([
+            'avaliableTimes' => array_values($avaliableTimes->toArray())
+        ]);
     }
 }

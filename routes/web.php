@@ -8,6 +8,8 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/appointments/avaliableTimes/{date}', [AppointmentController::class, 'listAvaliableTimes'])->name('appointment.avaliableTimes');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

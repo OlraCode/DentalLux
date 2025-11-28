@@ -30,21 +30,12 @@
                 </div>
 
                 <div class="flex flex-col">
-                    <label for="date" class="font-semibold">Data preferida*</label>
-                    <select name="date" id="date">
-                        @if ($isEdit)
-                            <option value="{{ $appointment->date->format('d/m/Y') }}">{{ $appointment->date->format('d/m') }}</option>
-                        @else
-                            <option>Data</option>
-                        @endif
-                        <option value="14-11-2025">14/11</option>
-                        <option value="15-11-2025">15/11</option>
-                        <option value="16-11-2025">16/11</option>
-                    </select>
+                    <label for="date" class="font-semibold">Data*</label>
+                    <input name="date" id="date" type="text" placeholder="Insira uma data" value="{{ $appointment->date?->format('d/m/Y') }}" class="border border-gray-300 rounded-md p-1.5">
                 </div>
 
                 <div class="flex flex-col">
-                    <label for="time" class="font-semibold">Horário preferido*</label>
+                    <label for="time" class="font-semibold">Horário*</label>
                     <select name="time" id="time">
                         @if ($isEdit)
                             <option value="{{ $appointment->time->format('H:i') }}">{{ $appointment->time->format('H:i') }}</option>
@@ -75,7 +66,7 @@
         const timeInput = document.getElementById('time')
 
         dateInput.addEventListener('change', function () {
-            const date = this.value
+            const date = this.value.split('/').join('-')
 
             if (!date) return
 

@@ -24,7 +24,7 @@ class Appointment extends Model
 
     public function setDate(string $date)
     {
-        $this->date = \DateTimeImmutable::createFromFormat('d-m-Y', $date);
+        $this->date = \DateTimeImmutable::createFromFormat('d/m/Y', $date);
     }
 
     public function setTime(string $time)

@@ -30,9 +30,9 @@
 
                 <a href="{{ route('appointment.create') }}" @class([
                         'button border-0',
-                        'bg-sky-500 text-white shadow-lg hover:opacity-75' => request()->routeIs('appointment.create')
+                        'bg-sky-500 text-white shadow-lg hover:opacity-75' => request()->routeIs('appointment.create') || request()->routeIs('appointment.confirm')
                     ])>
-                    <img src="{{asset('img/agenda.png')}}" @class(['h-4 brightness-0', 'brightness-100' =>  request()->routeIs('appointment.create')])>
+                    <img src="{{asset('img/agenda.png')}}" @class(['h-4 brightness-0', 'brightness-100' =>  request()->routeIs('appointment.create') || request()->routeIs('appointment.confirm')]) >
                     Agendar
                 </a>
 

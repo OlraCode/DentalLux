@@ -53,7 +53,12 @@ class AppointmentController extends Controller
 
         $appointment->save();
 
-        return redirect(route('appointment.index'));
+        return redirect(route('appointment.confirm', ['appointment' => $appointment->id]));
+    }
+
+    public function confirm(Appointment $appointment)
+    {
+        return view('appointment.confirm', compact('appointment'));
     }
 
     /**

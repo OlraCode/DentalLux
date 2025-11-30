@@ -35,15 +35,18 @@ class PaymentController extends Controller
         return redirect($session->url);
     }
 
-    public function success()
+    public function success(Appointment $appointment)
     {
+        $appointment->payment = 'Pago';
+        $appointment->save();
+
         return redirect(route('appointment.index'))
-            ->with('message', 'Pagamento realizado com sucesso.');
+            ->with('success', 'Pagamento realizado com sucesso.');
     }
         
     public function cancel(Appointment $appointment)
     {
-        return redirect(route('appointment.confirm', ['appointment' => $appointment->id]))
-            ->with('message', 'Pagamento cancelado.');
+        return redirect(route('appointment.index'))
+            ->with('error', 'Pagamento cancelado.');
     }
 }

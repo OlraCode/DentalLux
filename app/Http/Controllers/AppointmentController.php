@@ -66,7 +66,7 @@ class AppointmentController extends Controller
      */
     public function show(Appointment $appointment)
     {
-        //
+        return view('appointment.show', compact('appointment'));
     }
 
     /**
@@ -89,7 +89,7 @@ class AppointmentController extends Controller
 
         $appointment->save();
 
-        return redirect(route('appointment.index'));
+        return redirect(route('appointment.index'))->with('success', 'Consulta atualizada.');
     }
 
     /**
@@ -97,7 +97,9 @@ class AppointmentController extends Controller
      */
     public function destroy(Appointment $appointment)
     {
-        //
+        $appointment->delete();
+
+        return redirect(route('appointment.index'))->with('message', 'Consulta cancelada.');
     }
 
     public function listAvaliableTimes(Request $request)

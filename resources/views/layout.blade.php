@@ -99,6 +99,14 @@
 
     </div>
 
+    @if (session('success'))
+        <x-alert type="success" :message="session('success')" />
+    @endif
+
+    @if (session('error'))
+        <x-alert type="error" :message="session('error')" />
+    @endif
+
 
     <main class="max-w-[1600px] w-full mx-auto p-6 flex-1">
         @yield('content')

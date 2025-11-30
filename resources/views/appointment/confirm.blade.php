@@ -24,17 +24,33 @@
                 <div class="flex flex-col">
                     <h2 class="mb-3">Método de pagamento</h2>
 
-                    <div class="mb-1 flex items-center">
-                        <input type="radio" name="payment" id="consult" class="size-4.5" checked>
-                        <label for="consult" class="ml-2 text-lg font-semibold text-gray-700">Pagar no consultório</label>
-                    </div>
                     <div class="flex items-center">
-                        <input type="radio" name="payment" id="now" class="size-4.5">
+                        <input type="radio" name="payment" id="now" value="now" class="size-4.5" checked>
                         <label for="now" class="ml-2 text-lg font-semibold text-gray-700">Pagar agora</label>
                     </div>
+                    <div class="mb-1 flex items-center">
+                        <input type="radio" name="payment" id="consult" value="consult" class="size-4.5">
+                        <label for="consult" class="ml-2 text-lg font-semibold text-gray-700">Pagar no consultório</label>
+                    </div>
                 </div>
-                <button type="submit" class="button mt-5 flex justify-center bg-sky-400 text-white hover:opacity-80">Confirmar</button>
+                <a href="{{ route('payment.create', ['appointment' => $appointment->id]) }}" class="button mt-5 flex justify-center bg-sky-400 text-white hover:opacity-80" id="linkPagamento">Confirmar</a>
             </div>
     </div>
+
+    <script>
+
+        document.querySelectorAll('input[name="payment"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                const link = document.getElementById('linkPagamento')
+
+                if (this.value === 'now') {
+                    link.href = "{{ route('payment.create', ['appointment' => $appointment->id]) }}"
+                } else if (this.value === 'consult') {
+                    link.href = "{{ route('appointment.index') }}"
+                }
+            })
+        })
+
+    </script>
 
 @endsection

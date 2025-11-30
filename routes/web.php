@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\PaymentController;
 
 Route::get('/', function () {
     return view('home');
@@ -21,6 +22,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/appointments/{appointment}/confirm', [AppointmentController::class, 'confirm'])->name('appointment.confirm');
     Route::get('/appointments/{appointment}/edit', [AppointmentController::class, 'edit'])->name('appointment.edit');
     Route::put('/appointments/{appointment}', [AppointmentController::class, 'update'])->name('appointment.update');
+    
+    Route::get('/payment/{appointment}', [PaymentController::class, 'create'])->name('payment.create');
+    Route::get('/payment/{appointment}/success', [PaymentController::class, 'success'])->name('payment.success');
+    Route::get('/payment/{appointment}/cancel', [PaymentController::class, 'cancel'])->name('payment.cancel');
 });
 
 require __DIR__.'/auth.php';

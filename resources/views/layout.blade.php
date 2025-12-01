@@ -30,9 +30,9 @@
 
                 <a href="{{ route('appointment.create') }}" @class([
                         'button border-0',
-                        'bg-sky-500 text-white shadow-lg hover:opacity-75' => request()->routeIs('appointment.create')
+                        'bg-sky-500 text-white shadow-lg hover:opacity-75' => request()->routeIs('appointment.create') || request()->routeIs('appointment.confirm')
                     ])>
-                    <img src="{{asset('img/agenda.png')}}" @class(['h-4 brightness-0', 'brightness-100' =>  request()->routeIs('appointment.create')])>
+                    <img src="{{asset('img/agenda.png')}}" @class(['h-4 brightness-0', 'brightness-100' =>  request()->routeIs('appointment.create') || request()->routeIs('appointment.confirm')]) >
                     Agendar
                 </a>
 
@@ -98,6 +98,14 @@
         </div>
 
     </div>
+
+    @if (session('success'))
+        <x-alert type="success" :message="session('success')" />
+    @endif
+
+    @if (session('error'))
+        <x-alert type="error" :message="session('error')" />
+    @endif
 
 
     <main class="max-w-[1600px] w-full mx-auto p-6 flex-1">

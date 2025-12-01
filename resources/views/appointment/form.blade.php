@@ -24,8 +24,10 @@
                         @else
                             <option>Selecione o serviço</option>
                         @endif
-                        <option value="2">Clareamento</option>
                         <option value="1">Geral</option>
+                        <option value="2">Clareamento</option>
+                        <option value="3">Ortodontia</option>
+                        <option value="4">Limpeza Dental</option>
                     </select>
                 </div>
 
@@ -40,6 +42,8 @@
                         <option value="14/11/2025">14/11</option>
                         <option value="15/11/2025">15/11</option>
                         <option value="16/11/2025">16/11</option>
+                        <option value="17/11/2025">17/11</option>
+                        <option value="18/11/2025">18/11</option>
                     </select>
                 </div>
 
@@ -51,9 +55,12 @@
                         @else
                             <option>Horário</option>
                         @endif
+                        <option value="13:00">13:00</option>
                         <option value="14:00">14:00</option>
                         <option value="15:00">15:00</option>
                         <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                        <option value="18:00">18:00</option>
                     </select>
                 </div>
 
